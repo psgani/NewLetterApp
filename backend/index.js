@@ -10,7 +10,12 @@ const saveRoute = require("./routes/saveRoute")
 require("dotenv").config();
 
 const app = express();
-app.use(cors({ origin: "http://localhost:3000", credentials: true }));
+app.use(
+  cors({
+    origin: "https://new-letter-app.vercel.app/", // frontend URL from Vercel
+    credentials: true,
+  })
+);
 app.use(express.json());
 app.use(session({ secret: process.env.JWT_SECRET, resave: false, saveUninitialized: false,cookie: {
     httpOnly: true,
