@@ -12,7 +12,7 @@ require("dotenv").config();
 const app = express();
 app.use(
   cors({
-    origin: "https://new-letter-app.vercel.app/", // frontend URL from Vercel
+    origin: "https://new-letter-app.vercel.app", // frontend URL from Vercel
     credentials: true,
   })
 );
