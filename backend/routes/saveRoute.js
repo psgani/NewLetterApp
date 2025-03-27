@@ -12,8 +12,10 @@ router.post("/save", async (req, res) => {
   console.log(req.body);
 
   try {
+    const credentialsPath = "/etc/secrets/GOOGLE_CREDENTIALS_JSON";
+    const credentials = JSON.parse(fs.readFileSync(credentialsPath, "utf8"));
     const auth = new google.auth.GoogleAuth({
-      keyFile: path.join(__dirname, "../credentials.json"),
+      credentials,
       scopes: [
         "https://www.googleapis.com/auth/drive.file",
         "https://www.googleapis.com/auth/documents",
