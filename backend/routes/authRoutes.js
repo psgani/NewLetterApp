@@ -8,7 +8,7 @@ router.get("/google", passport.authenticate("google", { scope: ["profile", "emai
 router.get(
   "/google/callback",
   passport.authenticate("google", { failureRedirect: "/" }),
-  (req, res) => res.redirect("http://localhost:3000/dashboard")
+  (req, res) => res.redirect("https://new-letter-app.vercel.app/dashboard")
 );
 
 router.get("/user", (req, res) => {
