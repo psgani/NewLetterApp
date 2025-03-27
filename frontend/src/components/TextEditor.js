@@ -10,7 +10,7 @@ function TextEditor({ user, refreshLetters }) {
   const saveToGoogleDrive = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/save",
+        `${process.env.REACT_APP_API_BASE_URL}/api/save`,
         { content, title, googleId: user.googleId },
         { withCredentials: true }
       );

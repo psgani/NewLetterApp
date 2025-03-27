@@ -12,7 +12,7 @@ function App() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/auth/user", { withCredentials: true })
+      .get(`${process.env.REACT_APP_API_BASE_URL}/auth/user`, { withCredentials: true })
       .then((res) => {
         setUser(res.data);
         fetchLetters();
@@ -23,16 +23,16 @@ function App() {
 
   const fetchLetters = () => {
     axios
-      .get("http://localhost:5000/api/letters", { withCredentials: true })
+      .get(`${process.env.REACT_APP_API_BASE_URL}/api/letters`, { withCredentials: true })
       .then((res) => setLetters(res.data))
       .catch((err) => console.error("Error fetching letters:", err));
   };
 
-  const login = () => window.open("http://localhost:5000/auth/google", "_self");
+  const login = () => window.open(`${process.env.REACT_APP_API_BASE_URL}/auth/google`, "_self");
 
   const handleLogout = async () => {
     try {
-      await axios.get("http://localhost:5000/auth/logout", {
+      await axios.get(`${process.env.REACT_APP_API_BASE_URL}/auth/logout`, {
         withCredentials: true,
       });
       setUser(null);
